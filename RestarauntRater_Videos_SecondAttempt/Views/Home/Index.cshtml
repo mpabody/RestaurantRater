@@ -1,10 +1,20 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+
+    var allRatings = new Dictionary<int, string>
+{
+        { 1, "No Ambience, Food Carelessly Prepared, Staff Not Attentive"},
+        { 2, "Little Ambience, Food Not Flavorful and Presentation Lacking, Staff Not Attentive "},
+        { 3, "Mediocre Setting, Forgettable Menu, Lack Of variety, Mediocre Service"},
+        { 4, "Pleasant Environment, Food Well Prepared"},
+        { 5, "Ambience, Food, Staff - Excellent!"}
+    };
 }
 
-<div class="jumbotron">
+<div class="jumbotron text-center">
     <h1>Restaraunt Rater</h1>
     <p class="lead">Restaurant Rater is a simple web app powered by ASP .NET Web MVC that allows users to come in and record different restaurants and rate them.</p>
+    <img src="~/assets/restaurantrating.png" />
     <p>
         @Html.ActionLink("Learn More", "About", null, new { @class = "btn btn-primary btn-lg" })
     </p>
@@ -12,20 +22,38 @@
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Rate a Restaurant</h2>
         <p>
             Click on the navbar button link to Rate a Restaurant or click below on the button that says Rate a Restaurant.
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Rate a Restaurant &raquo;</a></p>
+        @Html.ActionLink("Create a New Rating", "Create", "Restaurant", null, new { @class = "btn btn-primary btn-md" })
     </div>
     <div class="col-md-4">
-        <h2>Get More Information</h2>
+        <h2>See Ratings</h2>
         <p>Click here to learn more about Restaurant Rater.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        @Html.ActionLink("Learn More", "Index", "Restaurant", null, new { @class = "btn btn-primary btn-md" })
     </div>
+
     <div class="col-md-4">
-        <h2>Get In Touch</h2>
-        <p>Click here to contact owners of Restaurant Rater with your comments/concerns.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="item-caption">
+                        <h3>Rating</h3>
+                        <p>What to expect</p>
+                    </div>
+                </div>
+
+                @foreach (var entry in allRatings)
+                {
+                    <div class="item">
+                        <div class="item-caption">
+                            <h2>@Html.DisplayFor(model => entry.Key)</h2>
+                            <h4>@Html.DisplayFor(model => entry.Value)</h4>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
     </div>
 </div>
