@@ -28,4 +28,10 @@ textarea {
 }
 #carouselExampleSlidesOnly{
     text-align: center;
+    background-color: gray;
+}
+.jumbotron {
+    background-image: url('../assets/RestaurantCoverImage.jpg');
+    color: white;
+    font-weight: bold;
 }
