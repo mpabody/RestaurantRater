@@ -6,9 +6,9 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm()) // creates a new form tag and the content inside {} is part of form
 {
-    @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken() // generates hidden form field so we can validate it in controller later??
 
 <div class="form-horizontal">
     <h4>New Restaurant</h4>
